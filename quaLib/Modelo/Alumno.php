@@ -1,5 +1,4 @@
 <?php
-use Exception;
 class Alumno {
     private $atributos = [];
 
@@ -10,12 +9,8 @@ class Alumno {
      * @param string $apellidos del alumno
      * @param string $asignatura del alumno
      * @param float $nota del alumno
-     * @throws Exception si no se valida correctamente
      */
     public function __construct(int $id, string $nombre, string $apellidos, string $asignatura, float $nota) {
-        if (!$this->validarCadena($id, $nombre, $apellidos, $asignatura || $nota <= 0)) {
-            throw new Exception("Error al crear el Alumno");
-        }
         $this->atributos['id'] = $id;
         $this->atributos['nombre'] = $nombre;
         $this->atributos['apellidos'] = $apellidos;
@@ -53,24 +48,9 @@ class Alumno {
      * Función que recoge un Alumno con sus datos
      * @param array $alumno a recoger
      * @return Alumno Con sus datos
-     * @throws Exception si no se valida correctamente
      */
     public static function getAlumno(array $alumno): Alumno {
         [$id, $nombre, $apellidos, $asignatura, $nota] = [$alumno['id'], $alumno['nombre'], $alumno['apellidos'], $alumno['asignatura'], $alumno['nota']];
         return new Alumno($id, $nombre, $apellidos, $asignatura, $nota);
-    }
-
-    /**
-     * Función que valida si una cadena está vacía
-     * @param string $cadenas a validar
-     * @return bool true|false según esté vacía o no
-     */
-    public function validarCadena(... $cadenas):bool {
-        foreach ($cadenas as $cadena) {
-            if ($cadena == null || $cadena == "") {
-                return false;
-            }
-        }
-        return true;
     }
 }

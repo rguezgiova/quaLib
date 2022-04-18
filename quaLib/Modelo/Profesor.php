@@ -1,5 +1,4 @@
 <?php
-use Exception;
 class Profesor {
     private $atributos = [];
 
@@ -12,9 +11,6 @@ class Profesor {
      * @throws Exception si no se valida correctamente
      */
     public function __construct(string $dni, string $nombre, string $apellidos, string $password) {
-        if (!$this->validarCadena($dni, $nombre, $apellidos, $password)) {
-            throw new Exception("Error al crear el Profesor");
-        }
         $this->atributos['dni'] = $dni;
         $this->atributos['nombre'] = $nombre;
         $this->atributos['apellidos'] = $apellidos;
@@ -37,19 +33,5 @@ class Profesor {
      */
     public function __get(string $atributo) {
         return $this->atributos[$atributo];
-    }
-
-    /**
-     * Función que valida si una cadena está vacía
-     * @param string $cadenas a validar
-     * @return bool true|false según esté vacía o no
-     */
-    public function validarCadena(... $cadenas):bool {
-        foreach ($cadenas as $cadena) {
-            if ($cadena == null || $cadena == "") {
-                return false;
-            }
-        }
-        return true;
     }
 }
