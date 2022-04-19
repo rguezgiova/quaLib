@@ -9,7 +9,7 @@ class ModeloAlumno {
      * @return false|PDOStatement|void Según el resultado de la consulta
      */
     public static function consulta(string $sql) {
-        [$host, $usuario, $password, $bd] = ['localhost', 'staff', 'adminadmin123456', 'libroCalificaciones'];
+        [$host, $usuario, $password, $bd] = ['localhost', 'staff', 'adminadmin123456', 'quaLib'];
         try {
             $conexion = new PDO("mysql:host=$host;dbname=$bd;charset=utf8", $usuario, $password);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
