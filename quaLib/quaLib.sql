@@ -21,3 +21,18 @@ CREATE TABLE alumnos (
     nota FLOAT NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE = INNODB;
+
+INSERT INTO profesores VALUES 
+('12345678A', 'Carlos', 'Pérez García', '123456'),
+('12345678B', 'Jose', 'Martín Serrano', '123456'),
+('12345678C', 'Laura', 'Vidal García', '123456'),
+('12345678D', 'Maria', 'Gómez García', '123456'),
+('12345678E', 'Fidel', 'Alterio Melero', '123456');
+
+INSERT INTO alumnos VALUES 
+(NULL, 'Dylan', 'Rodríguez Vidal', 'Matemáticas', 10),
+(NULL, 'Pedro', 'Peralta Alvarez', 'Matemáticas', 7.5),
+(NULL, 'Luis', 'Flores Martín', 'Matemáticas', 5),
+(NULL, 'Angel', 'Luis Pérez', 'Matemáticas', 3.7),
+(NULL, 'Cristo', 'Delgado Hernandez', 'Matemáticas', 6.2);
+

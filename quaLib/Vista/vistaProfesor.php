@@ -34,10 +34,10 @@
                     foreach ($listaAlumnos as $alumno) {
                     ?>
                     <tr id="<?=$alumno->id?>">
-                        <td><input type="text" name="codigo" value="<?=$alumno->id?>" style="width:100px;"></td>
+                        <td><input type="number" name="codigo" value="<?=$alumno->id?>" style="width:100px;"></td>
                         <td><input type="text" name="descripcion" value="<?=$alumno->nombre?>" style="width:350px;"></td>
-                        <td><input type="number" name="pcompra" value="<?=$alumno->apellidos?>" style="width:120px;"></td>
-                        <td><input type="number" name="pventa" value="<?=$alumno->asignatura?>" style="width:120px;"></td>
+                        <td><input type="text" name="pcompra" value="<?=$alumno->apellidos?>" style="width:120px;"></td>
+                        <td><input type="text" name="pventa" value="<?=$alumno->asignatura?>" style="width:120px;"></td>
                         <td><input type="number" name="stock" value="<?=$alumno->nota?>" style="width:100px;"></td>
                     </tr>
                     <?php
