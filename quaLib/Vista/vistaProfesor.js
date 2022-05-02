@@ -15,16 +15,16 @@ function peticion(form) {
             if (respuesta['response'] === true) {
                 switch (operacion) {
                     case "insertar":
-                        accion = 'insertado';
+                        accion = 'insertada';
                         break;
                     case "modificar":
-                        accion = 'actualizado';
+                        accion = 'modificada';
                         break;
                     case "eliminar":
-                        accion = 'eliminado';
+                        accion = 'eliminada';
                         break;
                 }
-                alert('Producto ' + accion + ' correctamente');
+                alert('Persona ' + accion + ' correctamente');
                 location.reload();
             } else {
                 alert('Error en ' + operacion);
@@ -78,10 +78,10 @@ function modificar(id) {
     let botonModificar = document.getElementById('modificar_'+id);
     botonModificar.innerHTML = 'Guardar';
     let listener = function() {
-        cambiarFila(inputs, true);
+        cambiarFila(inputs, true, 'white');
         this.innerHTML = 'Modificar';
         this.removeEventListener('click', listener);
-        crearForm(inputs);
+        crearForm(inputs, 'modificar');
     }
     botonModificar.addEventListener('click', listener);
 }
@@ -91,10 +91,11 @@ function insertar() {
     crearForm(inputs, 'insertar');
 }
 
-function cambiarFila(inputs, readOnly = false) {
+function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
     for (let input of inputs) {
         if (input.name !== name) {
             input.readOnly = readOnly;
+            input.style.backgroundColor = background;
         }
     }
 }

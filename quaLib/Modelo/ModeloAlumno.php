@@ -56,11 +56,11 @@ class ModeloAlumno {
      * @param Alumno $alumno a modificar
      * @return bool True|False según el resultado
      */
-    public static function modificar(Alumno $alumno) {
-        $sql = "UPDATE alumnos SET";
+    public static function modificar(Alumno $alumno): bool {
+        $sql = "UPDATE alumnos SET ";
         $atributos = $alumno->getAtributos();
         foreach ($atributos as $clave => $valor) {
-            $sql += "$clave='$valor',";
+            $sql .= "$clave='$valor',";
         }
         $sql = substr($sql, 0, strlen($sql) - 1);
         $sql .= "WHERE id='".$alumno->id."'";
@@ -77,7 +77,6 @@ class ModeloAlumno {
      * @param int $numPag número de página
      * @param int $tamPag tamaño de página
      * @return array Con los datos de los alumnos
-     * @throws Exception si no se valida correctamente
      */
     public static function listar(int $numPag = 1, int $tamPag = 10): array {
         $comienzo = ($numPag - 1) * $tamPag;
@@ -93,20 +92,9 @@ class ModeloAlumno {
      * Función que calcula el total de alumnos en la Base de Datos
      * @return int número total de alumnos
      */
-    public static function numAlumnos():int {
-        $resultado = ModeloAlumno::consulta("SELECT COUNT(*) as NumAlumnos FROM alumnos");
+    public static function numAlumnos() {
+        $resultado = ModeloAlumno::consulta("SELECT COUNT(*) as numAlumnos FROM alumnos");
         $count = $resultado->fetch(PDO::FETCH_ASSOC);
         return intval($count['numAlumnos']);
-    }
-
-    /**
-     * Función que recoge un alumno determinadoe
-     * @param $id del alumno a recoger
-     * @return Alumno con sus datos
-     * @throws Exception si no se valida correctamente
-     */
-    public static function getAlumno($id) {
-        $resultado = self::consulta("SELECT * FROM alumnos WHERE id='".$id."'");
-        return Alumno::getAlumno($resultado->fetch(PDO::FETCH_ASSOC));
     }
 }

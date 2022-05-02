@@ -11,26 +11,26 @@ class ControladorProfesor {
         return ModeloAlumno::insertar($datos);
     }
 
-    public static function eliminar($id) {
+    public static function eliminar($id): bool {
         return ModeloAlumno::eliminar($id);
     }
 
-    public static function modificiar($datos) {
+    public static function modificiar($datos): bool {
         return ModeloAlumno::modificar($datos);
     }
 
-    public static function numAlumnos() {
+    public static function numAlumnos(): int {
         return ModeloAlumno::numAlumnos();
     }
 }
 
 if (isset($_POST['operacion']) && $_POST['operacion'] == 'insertar')  {
     $atributos = [
-        "id" => $_POST['id'],
+        "id" => intval($_POST['id']),
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
         "asignatura" => $_POST['asignatura'],
-        "nota" => $_POST['nota'],
+        "nota" => floatval($_POST['nota']),
     ];
     $alumno = Alumno::getAlumno($atributos);
     $resultado = ModeloAlumno::insertar($alumno);
@@ -42,8 +42,8 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'insertar')  {
 }
 
 if (isset($_POST['operacion']) && $_POST['operacion'] == 'eliminar')  {
-    $codigo = $_POST['codigo'];
-    $resultado = ModeloAlumno::eliminar($codigo);
+    $id = intval($_POST['id']);
+    $resultado = ModeloAlumno::eliminar($id);
     if ($resultado) {
         echo '{"response": true}';
     } else {
@@ -51,13 +51,13 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'eliminar')  {
     }
 }
 
-if (isset($_POST['operacion']) && $_POST['operacion'] == 'actualizar')  {
+if (isset($_POST['operacion']) && $_POST['operacion'] == 'modificar')  {
     $atributos = [
-        "id" => $_POST['id'],
+        "id" => intval($_POST['id']),
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
         "asignatura" => $_POST['asignatura'],
-        "nota" => $_POST['nota'],
+        "nota" => floatval($_POST['nota']),
     ];
     $alumno = Alumno::getAlumno($atributos);
     $resultado = ModeloAlumno::modificar($alumno);

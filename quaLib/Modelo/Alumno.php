@@ -4,18 +4,28 @@ class Alumno {
 
     /**
      * Constructor de la clase Alumno
-     * @param int $id del alumno
      * @param string $nombre del alumno
      * @param string $apellidos del alumno
      * @param string $asignatura del alumno
      * @param float $nota del alumno
+     * @param int|null $id del alumno
      */
-    public function __construct(int $id, string $nombre, string $apellidos, string $asignatura, float $nota) {
-        $this->atributos['id'] = $id;
+    public function __construct(string $nombre, string $apellidos, string $asignatura, float $nota, int $id = null) {
         $this->atributos['nombre'] = $nombre;
         $this->atributos['apellidos'] = $apellidos;
         $this->atributos['asignatura'] = $asignatura;
         $this->atributos['nota'] = $nota;
+        $this->atributos['id'] = $id;
+    }
+
+    /**
+     * Función que recoge un Alumno con sus datos
+     * @param array $alumno a recoger
+     * @return Alumno Con sus datos
+     */
+    public static function getAlumno(array $alumno): Alumno {
+        [$id, $nombre, $apellidos, $asignatura, $nota] = [$alumno['id'], $alumno['nombre'], $alumno['apellidos'], $alumno['asignatura'], $alumno['nota']];
+        return new Alumno($nombre, $apellidos, $asignatura, $nota, $id);
     }
 
     /**
@@ -29,10 +39,10 @@ class Alumno {
 
     /**
      * Función con los getters de la clase
-     * @param string $atributo que se recoge
+     * @param mixed $atributo que se recoge
      * @return mixed atributo recogido
      */
-    public function __get(string $atributo) {
+    public function __get($atributo) {
         return $this->atributos[$atributo];
     }
 
@@ -42,15 +52,5 @@ class Alumno {
      */
     public function getAtributos() {
         return $this->atributos;
-    }
-
-    /**
-     * Función que recoge un Alumno con sus datos
-     * @param array $alumno a recoger
-     * @return Alumno Con sus datos
-     */
-    public static function getAlumno(array $alumno): Alumno {
-        [$id, $nombre, $apellidos, $asignatura, $nota] = [$alumno['id'], $alumno['nombre'], $alumno['apellidos'], $alumno['asignatura'], $alumno['nota']];
-        return new Alumno($id, $nombre, $apellidos, $asignatura, $nota);
     }
 }
