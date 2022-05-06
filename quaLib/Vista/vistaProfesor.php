@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <img src="../src/img/QUALIB_logo.png" alt="Logo QUALIB" width="200px">
+            <img src="../src/img/quaLib_logo.png" alt="Logo QUALIB" width="200px">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             </div>
