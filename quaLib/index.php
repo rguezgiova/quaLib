@@ -13,12 +13,14 @@ session_start();
 if (isset($_POST['dni']) || isset($_POST['password'])) {
     $dni = $_POST['dni'];
     $password = $_POST['password'];
-    [$host, $usuario, $password, $bd] = ['localhost', 'staff', 'adminadmin123456', 'quaLib'];
-    $conexion = new PDO("mysql:host=$host;dbname=$bd;charset=utf8", $usuario, $password);
+    $passwordCifrado = password_hash($password, PASSWORD_DEFAULT);
+    $passwordVerify= password_verify($password, $passwordCifrado);
+    [$host, $usuario, $passworddb, $bd] = ['localhost', 'staff', 'adminadmin123456', 'quaLib'];
+    $conexion = new PDO("mysql:host=$host;dbname=$bd;charset=utf8", $usuario, $passworddb);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM profesores WHERE dni ='$dni' AND password = '$password'";
+    $sql = "SELECT * FROM profesores WHERE dni ='$dni'";
     $resultado = $conexion->query($sql);
-    if ($resultado) {
+    if ($resultado->fetch(PDO::FETCH_ASSOC) != null && $passwordVerify = true) {
         $_SESSION['dni'] = $dni;
         header("Location: Controlador/init.php");
     } else {
