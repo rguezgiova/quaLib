@@ -96,7 +96,7 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'insertarProfesor')  {
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
         "asignatura" => $_POST['asignatura'],
-        "password" => $_POST['password'],
+        "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
     ];
     $profesor = Profesor::getProfesor($atributos);
     $resultado = ModeloProfesor::insertar($profesor);
@@ -123,7 +123,7 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'modificarProfesor')  {
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
         "asignatura" => $_POST['asignatura'],
-        "password" => $_POST['password'],
+        "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
     ];
     $profesor = Profesor::getProfesor($atributos);
     $resultado = ModeloProfesor::modificar($profesor);
