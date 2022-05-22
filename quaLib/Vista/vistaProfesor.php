@@ -14,6 +14,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             </div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <?php
+                    foreach ($listaClases as $clase => $valor) {
+                    ?>
+                    <li><a href="#"><?=$valor?></a></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </li>
         </div>
     </nav>
     <div class="container-fluid">
@@ -42,10 +54,10 @@
                         <td><input type="text" name="nombre" value="<?=$alumno->nombre?>" style="width:120px;"></td>
                         <td><input type="text" name="apellidos" value="<?=$alumno->apellidos?>" style="width:350px;"></td>
                         <td><input type="text" name="asignatura" value="<?=$alumno->curso?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial1" value="<?=$alumno->parcial1?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial2" value="<?=$alumno->parcial2?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial1" value="<?=$alumno->parcial3?>" style="width:100px;"></td>
-                        <td><input type="number" name="nota" value="<?=$alumno->calcularNota()?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial1" id="parcial1" value="<?=$alumno->parcial1?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial2" id="parcial2" value="<?=$alumno->parcial2?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial3" id="parcial3" value="<?=$alumno->parcial3?>" style="width:100px;"></td>
+                        <td><input type="number" name="nota" id="nota" value="<?=$alumno->calcularNota()?>" style="width:100px;"></td>
                         <td>
                             <button type="button" class="btn btn-warning" id="modificar_<?=$alumno->id?>" onclick="modificar('<?=$alumno->id?>')">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">

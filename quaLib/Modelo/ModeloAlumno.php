@@ -97,4 +97,13 @@ class ModeloAlumno {
         $count = $resultado->fetch(PDO::FETCH_ASSOC);
         return intval($count['numAlumnos']);
     }
+
+    public static function getClases(): array {
+        $resultado = ModeloAlumno::consulta("SELECT curso FROM alumnos");
+        $listaClases = [];
+        while ($clase = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            $listaClases[] = $clase;
+        }
+        return $listaClases;
+    }
 }

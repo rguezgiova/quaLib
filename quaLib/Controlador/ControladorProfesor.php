@@ -22,6 +22,10 @@ class ControladorProfesor {
     public static function numAlumnos(): int {
         return ModeloAlumno::numAlumnos();
     }
+
+    public static function getClases(): array {
+        return ModeloAlumno::getClases();
+    }
 }
 
 if (isset($_POST['operacion']) && $_POST['operacion'] == 'insertar')  {

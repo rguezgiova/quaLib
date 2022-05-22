@@ -122,3 +122,14 @@ function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
         }
     }
 }
+
+function pintarNotas() {
+    let parcial1 = document.getElementById("parcial1").value;
+    let parcial2 = document.getElementById("parcial2").value;
+    let parcial3 = document.getElementById("parcial3").value;
+    let notaMedia = document.getElementById("nota").value;
+
+    if (parcial1 > 5 || parcial2 > 5 || parcial3 > 5 || notaMedia > 5) {
+
+    }
+}
