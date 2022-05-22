@@ -50,14 +50,14 @@
                     foreach ($listaAlumnos as $alumno) {
                     ?>
                     <tr id="<?=$alumno->id?>">
-                        <td><input type="number" name="id" value="<?=$alumno->id?>" style="width:100px;"></td>
-                        <td><input type="text" name="nombre" value="<?=$alumno->nombre?>" style="width:120px;"></td>
-                        <td><input type="text" name="apellidos" value="<?=$alumno->apellidos?>" style="width:350px;"></td>
-                        <td><input type="text" name="asignatura" value="<?=$alumno->curso?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial1" id="parcial1" value="<?=$alumno->parcial1?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial2" id="parcial2" value="<?=$alumno->parcial2?>" style="width:100px;"></td>
-                        <td><input type="number" name="parcial3" id="parcial3" value="<?=$alumno->parcial3?>" style="width:100px;"></td>
-                        <td><input type="number" name="nota" id="nota" value="<?=$alumno->calcularNota()?>" style="width:100px;"></td>
+                        <td><input type="number" name="id" maxlength="7" value="<?=$alumno->id?>" style="width:100px;"></td>
+                        <td><input type="text" name="nombre" maxlength="120" value="<?=$alumno->nombre?>" style="width:120px;"></td>
+                        <td><input type="text" name="apellidos" maxlength="120" value="<?=$alumno->apellidos?>" style="width:350px;"></td>
+                        <td><input type="text" name="curso" maxlength="3" value="<?=$alumno->curso?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial1" maxlength="3" id="parcial1_<?=$alumno->id?>" value="<?=$alumno->parcial1?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial2" maxlength="3" id="parcial2_<?=$alumno->id?>" value="<?=$alumno->parcial2?>" style="width:100px;"></td>
+                        <td><input type="number" name="parcial3" maxlength="3" id="parcial3_<?=$alumno->id?>" value="<?=$alumno->parcial3?>" style="width:100px;"></td>
+                        <td><input type="number" name="nota" id="nota_<?=$alumno->id?>" value="<?=$alumno->calcularNota()?>" style="width:100px;"></td>
                         <td>
                             <button type="button" class="btn btn-warning" id="modificar_<?=$alumno->id?>" onclick="modificar('<?=$alumno->id?>')">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">

@@ -80,7 +80,7 @@ class ModeloAlumno {
      */
     public static function listar(int $numPag = 1, int $tamPag = 10): array {
         $comienzo = ($numPag - 1) * $tamPag;
-        $resultado = ModeloAlumno::consulta("SELECT * FROM alumnos LIMIT $comienzo, $tamPag");
+        $resultado = ModeloAlumno::consulta("SELECT * FROM alumnos GROUP BY apellidos ASC LIMIT $comienzo, $tamPag");
         $listaAlumnos = [];
         while ($alumno = $resultado->fetch(PDO::FETCH_ASSOC)) {
             $listaAlumnos[] = Alumno::getAlumno($alumno);

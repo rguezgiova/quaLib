@@ -1,3 +1,7 @@
+window.onload = () => {
+    pintarNotas();
+}
+
 /**
  * Función que crea una petición según la acción
  * @param form que realiza la petición
@@ -123,13 +127,36 @@ function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
     }
 }
 
+
+/**
+ * Función que cambia el color de los valores si es mayor o igual a 5, aprobado (verde), si es menor a 5, suspendido (rojo)
+ */
 function pintarNotas() {
-    let parcial1 = document.getElementById("parcial1").value;
-    let parcial2 = document.getElementById("parcial2").value;
-    let parcial3 = document.getElementById("parcial3").value;
-    let notaMedia = document.getElementById("nota").value;
-
-    if (parcial1 > 5 || parcial2 > 5 || parcial3 > 5 || notaMedia > 5) {
-
+    let filas = document.getElementsByTagName("tr").length - 3;
+    for (let i = 1; i <= filas; i++) {
+        let parcial1 = document.getElementById("parcial1_"+i);
+        let parcial2 = document.getElementById("parcial2_"+i);
+        let parcial3 = document.getElementById("parcial3_"+i);
+        let notaMedia = document.getElementById("nota_"+i);
+        if (parcial1.value >= 5) {
+            parcial1.style.color = 'green';
+        } else {
+            parcial1.style.color = 'red';
+        }
+        if (parcial2.value >= 5) {
+            parcial2.style.color = 'green';
+        } else {
+            parcial2.style.color = 'red';
+        }
+        if (parcial3.value >= 5) {
+            parcial3.style.color = 'green';
+        } else {
+            parcial3.style.color = 'red';
+        }
+        if (notaMedia.value >= 5) {
+            notaMedia.style.color = 'green';
+        } else {
+            notaMedia.style.color = 'red';
+        }
     }
 }
