@@ -1,3 +1,7 @@
+/**
+ * Función que crea una petición según la acción
+ * @param form que realiza la petición
+ */
 function peticion(form) {
     let url = form.getAttribute('action');
 
@@ -15,16 +19,16 @@ function peticion(form) {
             if (respuesta['response'] === true) {
                 switch (operacion) {
                     case "insertar":
-                        accion = 'insertada';
+                        accion = 'insertado';
                         break;
                     case "modificar":
-                        accion = 'modificada';
+                        accion = 'modificado';
                         break;
                     case "eliminar":
-                        accion = 'eliminada';
+                        accion = 'eliminado';
                         break;
                 }
-                alert('Persona ' + accion + ' correctamente');
+                alert('Alumno ' + accion + ' correctamente');
                 location.reload();
             } else {
                 alert('Error en ' + operacion);
@@ -32,7 +36,12 @@ function peticion(form) {
         });
 }
 
-function crearForm(inputs, operacion, cantidad = null) {
+/**
+ * Función que crea el formulario
+ * @param inputs para el formulario
+ * @param operacion a realizar
+ */
+function crearForm(inputs, operacion) {
     let form = document.createElement('form');
     form.setAttribute('method', 'post');
     form.setAttribute('action', '../Controlador/ControladorProfesor.php');
@@ -56,12 +65,13 @@ function crearForm(inputs, operacion, cantidad = null) {
             }
         }
     }
-    if (cantidad != null) {
-        form.appendChild(cantidad)
-    }
     peticion(form);
 }
 
+/**
+ * Función que elimina una fila
+ * @param id de la fila
+ */
 function eliminar(id) {
     let tmpArray = [];
     let input = document.createElement('input');
@@ -71,6 +81,10 @@ function eliminar(id) {
     crearForm(tmpArray, 'eliminar');
 }
 
+/**
+ * Función que modifica una fila
+ * @param id de la fila
+ */
 function modificar(id) {
     let fila = document.getElementById(id);
     let inputs = fila.getElementsByTagName('input');
@@ -86,11 +100,20 @@ function modificar(id) {
     botonModificar.addEventListener('click', listener);
 }
 
+/**
+ * Función que inserta un nuevo valor
+ */
 function insertar() {
     let inputs = document.getElementById('insertar').getElementsByTagName('input');
     crearForm(inputs, 'insertar');
 }
 
+/**
+ * Función que cambia el color a una fila si se está modificando
+ * @param inputs a modificar
+ * @param readOnly tipo
+ * @param background color de fondo
+ */
 function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
     for (let input of inputs) {
         if (input.name !== name) {

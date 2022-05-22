@@ -32,8 +32,8 @@ class ModeloAlumno {
                 return false;
             }
         }
-        [$id, $nombre, $apellidos, $asignatura, $nota] = [$alumno->id, $alumno->nombre, $alumno->apellidos, $alumno->asignatura, $alumno->nota];
-        self::consulta("INSERT INTO alumnos VALUES ($id, '$nombre', '$apellidos', '$asignatura', $nota);");
+        [$id, $nombre, $apellidos, $curso, $parcial1, $parcial2, $parcial3] = [$alumno->id, $alumno->nombre, $alumno->apellidos, $alumno->curso, $alumno->parcial1, $alumno->parcial2, $alumno->parcial3];
+        self::consulta("INSERT INTO alumnos VALUES ($id, '$nombre', '$apellidos', '$curso', $parcial1, $parcial2,  $parcial3);");
         return true;
     }
 

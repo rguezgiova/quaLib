@@ -29,8 +29,10 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'insertar')  {
         "id" => intval($_POST['id']),
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
-        "asignatura" => $_POST['asignatura'],
-        "nota" => floatval($_POST['nota']),
+        "curso" => $_POST['curso'],
+        "parcial1" => floatval($_POST['parcial1']),
+        "parcial2" => floatval($_POST['parcial2']),
+        "parcial3" => floatval($_POST['parcial3']),
     ];
     $alumno = Alumno::getAlumno($atributos);
     $resultado = ModeloAlumno::insertar($alumno);
@@ -56,8 +58,10 @@ if (isset($_POST['operacion']) && $_POST['operacion'] == 'modificar')  {
         "id" => intval($_POST['id']),
         "nombre" => $_POST['nombre'],
         "apellidos" => $_POST['apellidos'],
-        "asignatura" => $_POST['asignatura'],
-        "nota" => floatval($_POST['nota']),
+        "curso" => $_POST['curso'],
+        "parcial1" => floatval($_POST['parcial1']),
+        "parcial2" => floatval($_POST['parcial2']),
+        "parcial3" => floatval($_POST['parcial3']),
     ];
     $alumno = Alumno::getAlumno($atributos);
     $resultado = ModeloAlumno::modificar($alumno);
