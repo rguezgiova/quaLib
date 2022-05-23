@@ -3,8 +3,14 @@ require_once("../Modelo/Alumno.php");
 require_once("../Modelo/ModeloAlumno.php");
 
 class ControladorProfesor {
-    public static function listar($numPag = 1, $tamPag = 10): array {
-        return ModeloAlumno::listar($numPag, $tamPag);
+    /**
+     * Función que lista los alumnos y los almacena en una lista
+     * @param $numPag
+     * @param int $tamPag
+     * @return array
+     */
+    public static function listar(int $tamPag = 20): array {
+        return ModeloAlumno::listar($tamPag);
     }
 
     public static function insertar($datos): bool {

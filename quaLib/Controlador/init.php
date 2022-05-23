@@ -3,11 +3,10 @@ require_once("ControladorProfesor.php");
 
 $listaAlumnos = [];
 $listaClases = [];
-$numPag = 1;
-$tamPag = 10;
+$tamPag = 20;
 $ultPag = ceil(ControladorProfesor::numAlumnos() / $tamPag);
 
-$listaAlumnos = ControladorProfesor::listar($numPag, $tamPag);
+$listaAlumnos = ControladorProfesor::listar($tamPag);
 $listaClases = ControladorProfesor::getClases();
 
 if(isset($_GET['pag']) && $_GET['pag'] <= $ultPag && $_GET['pag'] >= 1) {

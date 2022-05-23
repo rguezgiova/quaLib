@@ -74,13 +74,11 @@ class ModeloAlumno {
 
     /**
      * Función que lista a los alumnos de la Base de Datos
-     * @param int $numPag número de página
-     * @param int $tamPag tamaño de página
+     * @param int $tamPag Tamaño de página
      * @return array Con los datos de los alumnos
      */
-    public static function listar(int $numPag = 1, int $tamPag = 10): array {
-        $comienzo = ($numPag - 1) * $tamPag;
-        $resultado = ModeloAlumno::consulta("SELECT * FROM alumnos GROUP BY apellidos ASC LIMIT $comienzo, $tamPag");
+    public static function listar(int $tamPag = 20): array {
+        $resultado = ModeloAlumno::consulta("SELECT * FROM alumnos GROUP BY apellidos ASC LIMIT $tamPag");
         $listaAlumnos = [];
         while ($alumno = $resultado->fetch(PDO::FETCH_ASSOC)) {
             $listaAlumnos[] = Alumno::getAlumno($alumno);

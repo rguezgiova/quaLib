@@ -1,3 +1,6 @@
+/**
+ * Función que se lanza antes de cargar la página
+ */
 window.onload = () => {
     pintarNotas();
 }
@@ -35,7 +38,8 @@ function peticion(form) {
                 alert('Alumno ' + accion + ' correctamente');
                 location.reload();
             } else {
-                alert('Error en ' + operacion);
+                alert('Error al ' + operacion);
+                location.reload();
             }
         });
 }
@@ -61,7 +65,7 @@ function crearForm(inputs, operacion) {
         form.appendChild(inputTmp);
     } else {
         for (let input of inputs) {
-            if (input.name !== 'margen') {
+            if (input.name !== 'nota') {
                 let inputTmp = document.createElement('input');
                 inputTmp.setAttribute('name', input.name);
                 inputTmp.setAttribute('value', input.value);
@@ -132,31 +136,22 @@ function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
  * Función que cambia el color de los valores si es mayor o igual a 5, aprobado (verde), si es menor a 5, suspendido (rojo)
  */
 function pintarNotas() {
-    let filas = document.getElementsByTagName("tr").length - 3;
-    for (let i = 1; i <= filas; i++) {
-        let parcial1 = document.getElementById("parcial1_"+i);
-        let parcial2 = document.getElementById("parcial2_"+i);
-        let parcial3 = document.getElementById("parcial3_"+i);
-        let notaMedia = document.getElementById("nota_"+i);
-        if (parcial1.value >= 5) {
-            parcial1.style.color = 'green';
-        } else {
-            parcial1.style.color = 'red';
+    let arrayInputs = document.getElementsByTagName("input");
+    let arrayNumbers = [];
+    let j = 0;
+    for (let i = 0; i < arrayInputs.length; i++) {
+        if (arrayInputs[i].type == "number") {
+            arrayNumbers[j] = arrayInputs[i];
+            j++;
         }
-        if (parcial2.value >= 5) {
-            parcial2.style.color = 'green';
-        } else {
-            parcial2.style.color = 'red';
-        }
-        if (parcial3.value >= 5) {
-            parcial3.style.color = 'green';
-        } else {
-            parcial3.style.color = 'red';
-        }
-        if (notaMedia.value >= 5) {
-            notaMedia.style.color = 'green';
-        } else {
-            notaMedia.style.color = 'red';
+    }
+    for (let i = 0; i <= arrayNumbers.length; i++) {
+        if (arrayNumbers[i].name !== "id") {
+            if (arrayNumbers[i].value >= 5) {
+                arrayNumbers[i].style.color = 'green';
+            } else {
+                arrayNumbers[i].style.color = 'red';
+            }
         }
     }
 }

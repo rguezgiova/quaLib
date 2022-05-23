@@ -5,27 +5,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../assests/css/main.css" rel="stylesheet" />
     <title>Listado de alumnos</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <img src="../src/img/quaLib_logo.png" alt="Logo QUALIB" width="200px">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            </div>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <?php
-                    foreach ($listaClases as $clase => $valor) {
-                    ?>
-                    <li><a href="#"><?=$valor?></a></li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </li>
+            <img src="../src/img/quaLib_logo.png" alt="Logo QUALIB">
         </div>
     </nav>
     <div class="container-fluid">
