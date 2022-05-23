@@ -5,32 +5,38 @@ require_once("../Modelo/ModeloAlumno.php");
 class ControladorProfesor {
     /**
      * Función que lista los alumnos y los almacena en una lista
-     * @param $numPag
-     * @param int $tamPag
-     * @return array
+     * @param int $tamPag números de registros por página
+     * @return array con la lista de los alumnos
      */
     public static function listar(int $tamPag = 20): array {
         return ModeloAlumno::listar($tamPag);
     }
 
+    /**
+     * Función que inserta nuevo alumno en la DDBB
+     * @param $datos Alumno que se insertan
+     * @return bool true/false según se inserte o no
+     */
     public static function insertar($datos): bool {
         return ModeloAlumno::insertar($datos);
     }
 
+    /**
+     * Función que elimina a un alumno de la DDBB
+     * @param $id int del alumno que se elimina
+     * @return bool true/false según se elimine o no
+     */
     public static function eliminar($id): bool {
         return ModeloAlumno::eliminar($id);
     }
 
-    public static function modificiar($datos): bool {
+    /**
+     * Función que modifica a un alumno existente en la DDBB
+     * @param $datos Alumno que se modifican
+     * @return bool true/false según se modifique o no
+     */
+    public static function modificar($datos): bool {
         return ModeloAlumno::modificar($datos);
-    }
-
-    public static function numAlumnos(): int {
-        return ModeloAlumno::numAlumnos();
-    }
-
-    public static function getClases(): array {
-        return ModeloAlumno::getClases();
     }
 }
 

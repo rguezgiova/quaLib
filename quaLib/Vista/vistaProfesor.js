@@ -122,7 +122,7 @@ function insertar() {
  * @param readOnly tipo
  * @param background color de fondo
  */
-function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
+function cambiarFila(inputs, readOnly = false, background = '#79BFEA') {
     for (let input of inputs) {
         if (input.name !== name) {
             input.readOnly = readOnly;
@@ -130,7 +130,6 @@ function cambiarFila(inputs, readOnly = false, background = 'lightblue') {
         }
     }
 }
-
 
 /**
  * Función que cambia el color de los valores si es mayor o igual a 5, aprobado (verde), si es menor a 5, suspendido (rojo)

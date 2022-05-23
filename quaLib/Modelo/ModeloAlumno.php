@@ -85,23 +85,4 @@ class ModeloAlumno {
         }
         return $listaAlumnos;
     }
-
-    /**
-     * Función que calcula el total de alumnos en la Base de Datos
-     * @return int número total de alumnos
-     */
-    public static function numAlumnos() {
-        $resultado = ModeloAlumno::consulta("SELECT COUNT(*) as numAlumnos FROM alumnos");
-        $count = $resultado->fetch(PDO::FETCH_ASSOC);
-        return intval($count['numAlumnos']);
-    }
-
-    public static function getClases(): array {
-        $resultado = ModeloAlumno::consulta("SELECT curso FROM alumnos");
-        $listaClases = [];
-        while ($clase = $resultado->fetch(PDO::FETCH_ASSOC)) {
-            $listaClases[] = $clase;
-        }
-        return $listaClases;
-    }
 }
