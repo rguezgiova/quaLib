@@ -24,7 +24,7 @@ if (isset($_POST['dni']) || isset($_POST['password'])) {
         $_SESSION['dni'] = $dni;
         header("Location: Controlador/init.php");
     } else {
-        echo 'El DNI o contraseña es incorrecto, vuelve a intentarlo.<br/>';
+        header("Location: index.php");
     }
 } else {
     ?>
